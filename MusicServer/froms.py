@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from MusicServer.models import Track
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 
@@ -32,8 +33,9 @@ class SignInForm(AuthenticationForm):
 class SignUpForm(UserCreationForm):
     error_messages = dict(invalid='Логин содержит недопустмые символы',
                           required='Поле обязательно для заполнения',
-                          unique='Пользователь с таким логином уже зарегистрирован'
+                          duplicate_username='Пользователь с таким логином уже зарегистрирован'
     )
+
     username = forms.CharField(error_messages=error_messages,
                                label='Логин',
                                max_length=30,
@@ -62,7 +64,23 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('username', 'email', 'password1', 'password2')
 
+    def clean_username(self):
+        data = self.cleaned_data
+        try:
+            User.objects.get(username = data['username'])
+        except User.DoesNotExist:
+            return data['username']
+        raise forms.ValidationError('Пользователь с таким логином уже зарегистрирован')
+
 
 class TrackForm(forms.Form):
     # track = forms.FileField()
     source = forms.FileField()
+
+    def clean_source(self):
+        data = self.cleaned_data
+        try:
+            Track.objects.get(name = data['source'])
+        except Track.DoesNotExist:
+            return data['source']
+        raise forms.ValidationError('Такой трэк уже есть в системе')

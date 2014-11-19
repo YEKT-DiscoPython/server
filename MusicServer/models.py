@@ -10,6 +10,9 @@ class Track(models.Model):
     def __str__(self):
         return self.name
 
+    def pretty_name(self):
+        return self.name
+
     class Meta:
         ordering = ['name']
 

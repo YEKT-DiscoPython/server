@@ -27,6 +27,7 @@ def index_view(request):
         if 'sign_up' in data.keys():
             sign_up_form = SignUpForm(data=data)
             if sign_up_form.is_valid():
+
                 username = sign_up_form.clean_username()
                 password = sign_up_form.clean_password2()
 
@@ -135,7 +136,7 @@ def download_view(request, track_id):
     response = HttpResponse()
     response.content = file.read()
     response["Content-Disposition"] = "attachment; filename={0}".format(
-            track)
+            track[0])
     return response
 
     # return HttpResponseRedirect(reverse('user', kwargs={'uid': uid}))

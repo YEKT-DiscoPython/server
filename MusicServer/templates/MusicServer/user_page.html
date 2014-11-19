@@ -53,6 +53,9 @@
                                 }
                             </script>
                         </div>
+                        {% if track_form.errors %}
+                            <div class="text-error">Error</div>
+                        {% endif %}
                     </div>
 {#                    <div class="row-fluid file">#}
 {#                        <div class="fileform span10 offset1">#}
