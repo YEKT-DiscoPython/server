@@ -1,0 +1,67 @@
+body {
+    background: url(../images/background.jpg);
+    background-repeat: repeat-y;
+    background-size: cover;
+    padding: 5px;
+    min-width: 770px;
+}
+
+.disco {
+    color: #18E25A;
+    font-family: 'Indie Flower', cursive;
+    font-size: 80px;
+}
+
+.python {
+    color: #00C5CD;
+    font-family: 'Indie Flower', cursive;
+    font-size: 80px;
+}
+
+.title {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.login_form {
+    margin-top: 60px;
+}
+
+.login_title {
+    font-size: 25px;
+    font-family: 'Comfortaa', cursive;
+    color: #ccdddd;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sign_up {
+    color: #ccdddd;
+    text-align: left;
+}
+
+.sign_in {
+    color: #ccdddd;
+    text-align: right;
+}
+
+input {
+    width: 95%;
+}
+
+input[type=submit] {
+    background: #00cc33;
+    border: 1px;
+    width: 100%;
+    margin-top: 15px;
+    padding: 7px;
+    color: white;
+    text-shadow: 1px 2px 1px black;
+    font-family: 'Comfortaa', cursive;
+    border-radius: 5px;
+}
+
+input.login {
+    background: #006699;
+}
+

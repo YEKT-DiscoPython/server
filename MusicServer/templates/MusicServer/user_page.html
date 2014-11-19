@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+
+    <title>DiscoPython</title>
+
+    <link rel="stylesheet" type = "text/css" href="../../static/MusicServer/css/bootstrap.css">
+    <link rel="stylesheet" href="../../static/MusicServer/css/general_style.css">
+
+    <link rel="script" href="../../static/MusicServer/js/bootstrap.js">
+    <link rel="script" href="../../static/MusicServer/js/bootstrap.min.js">
+
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Comfortaa:400,700&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lobster|Stalinist+One&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript">
+        function getName (str, id){
+            if (str.lastIndexOf('\\')){
+                var i = str.lastIndexOf('\\')+1;
+            }
+            else{
+                var i = str.lastIndexOf('/')+1;
+            }
+            var filename = str.slice(i);
+            var uploaded = document.getElementById(id);
+            uploaded.innerHTML = filename;
+        }
+    </script>
+</head>
+<body>
+    <div class="row-fluid">
+        <div class="span8"><p class="lead"><span class="disco">Disco</span><span class="python">Python</span></p></div>
+        <div class="span4 exit"><a href="/user/id={{ uid }}">{{ username }}</a> | </a><a href="/logout">Сменить пользователя</a></div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span4 up">
+            <p class="text">Загрузить новый трэк в систему</p>
+            <form action="/upload" method="post" name="track" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <div class="row-fluid">
+                        <div class="fileform span10 offset1">
+                            <div id="fileformlabel"></div>
+                            <div class="selectbutton">Обзор</div>
+                            {{ track_form.source }}
+                            <script type="text/javascript">
+                                window.onload=function add_attr1() {
+                                    document.getElementById('id_source').setAttribute('onchange', "getName(this.value,'fileformlabel');");
+{#                                    document.getElementById('id_source').setAttribute('onchange', "getName(this.value,'fileformlabel1');");#}
+                                }
+                            </script>
+                        </div>
+                    </div>
+{#                    <div class="row-fluid file">#}
+{#                        <div class="fileform span10 offset1">#}
+{#                            <div id="fileformlabel1"></div>#}
+{#                            <div class="selectbutton">Обзор</div>#}
+{#                            {{ track_form.source }}#}
+{#                        </div>#}
+{#                    </div>#}
+                    <div class="row-fluid">
+                        <div class="span10 offset1">
+                            <input type="submit" value="Отправить" class="upload">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="span8" style="color: white">
+                {% for track in tracks %}
+                    <div class="row-fluid"><a href="/download/{{ track.pk }}" class="track_link span11">{{ track.name }}</a></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+body {
+    background: url(../images/background.jpg);
+    background-repeat: repeat-y;
+    background-size: cover;
+    padding: 5px;
+    min-width: 770px;
+}
+
+.disco {
+    color: #18E25A;
+    font-family: 'Indie Flower', cursive;
+    font-size: 25px;
+}
+
+.python {
+    color: #00C5CD;
+    font-family: 'Indie Flower', cursive;
+    font-size: 25px;
+}
+
+.username {
+    font-family: 'Comfortaa', cursive;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    padding: 5px;
+    margin-top: -13px;
+    color: #18E25A;
+}
+
+.exit {
+    font-family: 'Comfortaa', cursive;
+    text-align: right;
+    color: #0088cc;
+    padding-right: 5px;
+}
+
+.exit a:hover {
+    color: #00C5CD;
+}
+
+.fileform {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 26px;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.fileform .selectbutton {
+    font-family: 'Comfortaa', cursive;
+    background-color: #A2A3A3;
+    border: 1px solid #939494;
+    border-radius: 0px 5px 5px 0px;
+    color: #FFFFFF;
+    float: right;
+    font-size: 14px;
+    height: 26px;
+    line-height: 20px;
+    overflow: hidden;
+    padding: 2px 6px;
+    text-align: center;
+    vertical-align: middle;
+    width: 20%;
+    z-index: 20;
+}
+
+.fileform .upload,#id_track,#id_source{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    -moz-opacity: 0;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    font-size: 150px;
+    height: 30px;
+    z-index:20;
+}
+
+.text {
+    font-family: 'Comfortaa', cursive;
+    color: #ccdddd;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.up {
+    height: 100%;
+    align-content: center;
+    align-self: center;
+    vertical-align: middle;
+}
+
+.file {
+    padding: 20px 0px;
+}
+
+input[type=submit].upload {
+    width: 100%;
+    background: #00cc33;
+    border: 1px;
+    margin-top: 30px;
+    padding: 7px;
+    color: white;
+    text-shadow: 1px 2px 1px black;
+    font-family: 'Comfortaa', cursive;
+    border-radius: 5px;
+}
+
+.fileform #fileformlabel {
+    float: left;
+    height: 22px;
+    line-height: 22px;
+    overflow: hidden;
+    padding: 2px 2px 0px 2px;
+    text-align: left;
+    vertical-align: middle;
+    z-index: 10;
+    width: 70%;
+}
+
+.track_link {
+    padding: 10px;
+    padding-left: 10%;
+    color: #dddddd;
+    /*background: #858581;*/
+    border: 10px;
+    border-color: white;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 20px;
+    border-radius: 2px; /*Скругленные углы*/
+    -webkit-border-radius: 2px;  /*Скругленные углы*/
+    -moz-border-radius: 2px;  /*Скругленные углы*/
+    text-decoration: none; /*Ссылка без подчеркивания*/
+    text-shadow: none;
+    margin: 0 3px 3px 0;
+    display: inline-block;
+    -webkit-transition: all linear 0.3s;  /*Устанавливаем плавный переход при наведении курсора мыши */
+    -moz-transition: all linear 0.3s;
+    -ms-transition: all linear 0.3s;
+    -o-transition: all linear 0.3s;
+    transition: all linear 0.3s;
+    opacity: 0.5; /*Прозрачность изображения*/
+}
+
+.track_link:hover {
+    /*background: #858581;*/
+    background: linear-gradient(to left, rgba(133,133,129,0), rgba(133,133,129,0.8), rgba(133,133,129,1),
+                                rgba(133,133,129,1), rgba(133,133,129,1), rgba(133,133,129,1), rgba(133,133,129,1),
+                                rgba(133,133,129,0.8),rgba(133,133,129,0));;
+    color: #363636;
+    text-decoration: none;
+    opacity: 1; /*Делаем изображения непрозрачным*/
+}
+
+/*.track_link:first-letter {*/
+    /*color: #FF7F50;*/
+/*}*/
