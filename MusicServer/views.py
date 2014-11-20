@@ -6,6 +6,8 @@ from MusicServer.froms import SignInForm, SignUpForm, TrackForm
 from django.template import RequestContext
 from MusicServer.models import Track
 from django.http import HttpResponse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 import os
 PROJECT_PATH = os.path.dirname(__file__)
@@ -56,7 +58,7 @@ def sign_out_view(request):
     return HttpResponseRedirect(reverse('index'))
 
 
-def user_view(request, uid):
+def user_view(request, uid, page=1):
     user = request.user
     context = RequestContext(request)
     if not user.is_authenticated():
@@ -66,10 +68,20 @@ def user_view(request, uid):
     track_form = TrackForm()
 
     tracks = Track.objects.all()
+    paginator = Paginator(tracks, 10)
     # form = Track()
     # return render_to_response('MusicServer/user_page.html', {'form': form})
 
     my_username = request.user
+
+    try:
+        tracks = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        tracks = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        tracks = paginator.page(paginator.num_pages)
 
     return render_to_response('MusicServer/user_page.html', dict(username=my_username, uid=uid, track_form=track_form,
                                                                  tracks=tracks), context)
@@ -85,7 +97,7 @@ def handle_uploaded_files(files):
     # destination_track.close()
 
     # if source:
-    source_path = os.path.join(MEDIA_PATH, 'source\\') + str(source.name)
+    source_path = os.path.join(MEDIA_PATH, 'source/') + str(source.name)
     destination_source = open(source_path, 'wb+')
     for chunk in source.chunks():
         destination_source.write(chunk)

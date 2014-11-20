@@ -6,6 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', index_view, name='index'),
+    url(r'^user/id=(?P<uid>\d+)/(?P<page>\d+)$', user_view, name='user'),
     url(r'^user/id=(?P<uid>\d+)$', user_view, name='user'),
     url(r'^sign_out', sign_out_view, name='sign_out'),
     url(r'^upload$', upload_track, name='upload'),

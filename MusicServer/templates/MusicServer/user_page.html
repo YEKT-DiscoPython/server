@@ -75,6 +75,19 @@
                 {% for track in tracks %}
                     <div class="row-fluid"><a href="/download/{{ track.pk }}" class="track_link span11">{{ track.name }}</a></div>
                 {% endfor %}
+
+            <div class="row-fluid">
+                <div class="span6 page" style="text-align: right;">
+                    {% if tracks.has_previous %}
+                        <a href="/user/id={{ uid }}/{{ tracks.previous_page_number }}">	&#9668;</a>
+                    {% endif %}
+                </div>
+                <div class="span6 page" style="text-align: left;">
+                    {% if tracks.has_next %}
+                        <a href="/user/id={{ uid }}/{{ tracks.next_page_number }}">&#9658;</a>
+                    {% endif %}
+                </div>
+            </div>
             </div>
         </div>
     </div>

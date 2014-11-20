@@ -161,3 +161,14 @@ input[type=submit].upload {
 /*.track_link:first-letter {*/
     /*color: #FF7F50;*/
 /*}*/
+
+.page a {
+    text-align: center;
+    color: #00C5CD;
+    font-size: 35px;
+}
+
+.page a:hover {
+    text-decoration: none;
+    color: #18E25A;
+}
